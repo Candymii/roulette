@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Roulette Timer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PWA（後で使用） -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Roulette Timer</h1>
+
+        <!-- メンバー表示 -->
+        <div class="member-area">
+
+            <img
+                id="memberImage"
+                src="images/noimage.png"
+                alt="メンバー画像">
+
+            <div id="memberName">
+                STARTを押してください
+            </div>
+
+        </div>
+
+        <!-- タイマー -->
+        <div class="timer-area">
+
+            <div id="timer">
+                03:00
+            </div>
+
+            <div id="status">
+                待機中
+            </div>
+
+        </div>
+
+        <!-- ボタン -->
+        <div class="button-area">
+
+<!-- 設定画面 -->
+
+<div id="settingsPanel" class="settings-panel">
+
+
+    <h2>設定</h2>
+
+
+    <div class="setting-item">
+
+        <label>
+            メインタイマー（秒）
+        </label>
+
+        <input
+            id="mainTimerInput"
+            type="number"
+            value="180">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            インターバル（秒）
+        </label>
+
+        <input
+            id="intervalTimerInput"
+            type="number"
+            value="20">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            最低切替回数
+        </label>
+
+        <input
+            id="minShuffleInput"
+            type="number"
+            value="50">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            最大切替回数
+        </label>
+
+        <input
+            id="maxShuffleInput"
+            type="number"
+            value="80">
+
+    </div>
+
+
+
+    <div class="settings-buttons">
+
+        <button id="saveSettingsButton">
+            保存
+        </button>
+
+
+        <button id="closeSettingsButton">
+            閉じる
+        </button>
+
+    </div>
+
+
+</div>
+
+            <button id="startButton">
+                START
+            </button>
+
+            <button id="stopButton">
+                STOP
+            </button>
+
+            <button id="settingsButton">
+                設定
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+
+    <script src="data.js"></script>
+
+    <script src="roulette.js"></script>
+
+    <script src="timer.js"></script>
+
+    <script src="settings.js"></script>
+
+    <script src="app.js"></script>
+
+    <script>
+
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register(
+        "service-worker.js"
+    );
+
+}
+
+</script>
+</body>
+
+</html>

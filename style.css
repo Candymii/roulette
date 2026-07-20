@@ -1,0 +1,410 @@
+/* ==========================================
+   Roulette Timer v2.0
+   style.css
+========================================== */
+
+
+/* 全体 */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f2f2f2;
+
+    font-family:
+        "Yu Gothic",
+        "Hiragino Sans",
+        sans-serif;
+
+    color: #333;
+
+}
+
+
+/* メイン */
+
+.container {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+
+
+/* タイトル */
+
+h1 {
+
+    margin-bottom: 25px;
+
+    font-size: 32px;
+
+}
+
+
+
+/* メンバー表示 */
+
+.member-area {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.15);
+
+}
+
+
+
+/* 写真 */
+
+#memberImage {
+
+    width: 260px;
+
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    background: #ddd;
+
+}
+
+
+
+/* 名前 */
+
+#memberName {
+
+    margin-top: 20px;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+}
+
+
+
+/* タイマー */
+
+.timer-area {
+
+    margin-top: 30px;
+
+}
+
+
+
+/* 時間 */
+
+#timer {
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    color: #2196F3;
+
+}
+
+
+
+/* 状態表示 */
+
+#status {
+
+    margin-top: 10px;
+
+    font-size: 22px;
+
+    color: #666;
+
+}
+
+
+
+/* ボタン */
+
+.button-area {
+
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+button {
+
+    width: 130px;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+
+button:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+
+button:active {
+
+    transform: scale(0.95);
+
+}
+
+
+
+/* START */
+
+#startButton {
+
+    background: #4CAF50;
+
+    color: white;
+
+}
+
+
+
+/* STOP */
+
+#stopButton {
+
+    background: #F44336;
+
+    color: white;
+
+}
+
+
+
+/* 設定 */
+
+#settingsButton {
+
+    background: #607D8B;
+
+    color: white;
+
+}
+
+
+
+/* 無効状態 */
+
+button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+
+
+/* スマホ対応 */
+
+@media(max-width:600px) {
+
+
+    .container {
+
+        padding: 15px;
+
+    }
+
+
+    h1 {
+
+        font-size: 26px;
+
+    }
+
+
+    #memberImage {
+
+        width: 220px;
+
+        height: 220px;
+
+    }
+
+
+    #memberName {
+
+        font-size: 26px;
+
+    }
+
+
+    #timer {
+
+        font-size: 50px;
+
+    }
+
+
+    button {
+
+        width: 110px;
+
+        height: 50px;
+
+        font-size: 16px;
+
+    }
+
+}
+/* ==========================================
+   設定画面
+========================================== */
+
+.settings-panel {
+
+    display: none;
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.15);
+
+}
+
+
+.settings-panel h2 {
+
+    margin-bottom: 20px;
+
+    font-size: 26px;
+
+}
+
+
+
+.setting-item {
+
+    margin-bottom: 20px;
+
+    text-align: left;
+
+}
+
+
+
+.setting-item label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+
+.setting-item input {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding: 5px 10px;
+
+    font-size: 18px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+}
+
+
+
+.settings-buttons {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+}
+
+
+#saveSettingsButton {
+
+    background: #4CAF50;
+
+    color: white;
+
+}
+
+
+#closeSettingsButton {
+
+    background: #607D8B;
+
+    color: white;
+
+}
