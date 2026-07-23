@@ -204,3 +204,76 @@ settingsButton.addEventListener(
 
     }
 );
+
+// ==============================
+// カウンター機能
+// ==============================
+
+let counter = 0;
+
+
+// 表示更新
+
+function updateCounter() {
+
+    document.getElementById("counterValue").textContent =
+        counter;
+
+}
+
+
+
+// ＋ボタン
+
+document
+    .getElementById("plusButton")
+    .addEventListener("click", () => {
+
+
+        counter++;
+
+
+        updateCounter();
+
+
+    });
+
+
+
+
+// －ボタン
+
+document
+    .getElementById("minusButton")
+    .addEventListener("click", () => {
+
+
+        if (counter > 0) {
+
+            counter--;
+
+        }
+
+
+        updateCounter();
+
+
+    });
+
+
+
+
+// リセット
+
+document
+    .getElementById("resetCounterButton")
+    .addEventListener("click", () => {
+
+
+        counter = 0;
+
+
+        updateCounter();
+
+
+    });

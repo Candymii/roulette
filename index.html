@@ -118,7 +118,15 @@
 
     </div>
 
+<!-- メンバー管理 -->
 
+<div class="setting-item">
+
+    <button id="memberManagerButton">
+        メンバー管理
+    </button>
+
+</div>
 
     <div class="settings-buttons">
 
@@ -135,6 +143,68 @@
 
 
 </div>
+<!-- メンバー管理画面 -->
+
+<div id="memberManagerPanel" class="member-manager-panel">
+
+
+    <h2>
+        メンバー管理
+    </h2>
+
+
+    <div id="memberList">
+
+  </div>
+
+
+<div id="memberEditPanel" class="member-edit-panel">
+
+
+    <h2>
+        メンバー編集
+    </h2>
+
+
+    <img
+        id="editMemberImage"
+        src="images/noimage.png">
+
+<input
+    id="imageUpload"
+    type="file"
+    accept="image/*">
+
+
+<input
+    id="editMemberName"
+    type="text">
+
+    <div class="edit-buttons">
+
+        <button id="saveMemberEditButton">
+            保存
+        </button>
+
+
+        <button id="cancelMemberEditButton">
+            戻る
+        </button>
+
+    </div>
+
+
+</div>
+
+    </div>
+
+
+    <button id="closeMemberManagerButton">
+        閉じる
+    </button>
+
+
+</div>
 
             <button id="startButton">
                 START
@@ -147,6 +217,34 @@
             <button id="settingsButton">
                 設定
             </button>
+
+            <!-- カウンター -->
+
+<div class="counter-area">
+
+    <div class="counter-control">
+
+
+        <button id="minusButton">
+            －
+        </button>
+
+
+        <div id="counterValue">
+            0
+        </div>
+
+
+        <button id="plusButton">
+            ＋
+        </button>
+
+
+    </div>
+
+
+    <button id="resetCounterButton">
+    </button>
 
         </div>
 
@@ -161,6 +259,8 @@
     <script src="timer.js"></script>
 
     <script src="settings.js"></script>
+
+    <script src="memberManager.js"></script>
 
     <script src="app.js"></script>
 
