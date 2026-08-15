@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Roulette Timer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PWA（後で使用） -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1></h1>
+
+        <!-- メンバー表示 -->
+        <div class="member-area">
+
+            <img
+                id="memberImage"
+                src="images/start.jpg"
+                alt="メンバー画像">
+
+            <div id="memberName">
+                
+            </div>
+
+            <div id="eventResult">
+    
+</div>
+
+        </div>
+
+        <!-- タイマー -->
+        <div class="timer-area">
+
+            <div id="timer">
+                03:00
+            </div>
+
+            <div id="status">
+                待機中
+            </div>
+
+        </div>
+
+        <!-- ボタン -->
+        <div class="button-area">
+
+<!-- 設定画面 -->
+
+<div id="settingsPanel" class="settings-panel">
+
+
+    <h2>設定</h2>
+
+
+    <div class="setting-item">
+
+        <label>
+            メインタイマー（秒）
+        </label>
+
+        <input
+            id="mainTimerInput"
+            type="number"
+            value="180">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            インターバル（秒）
+        </label>
+
+        <input
+            id="intervalTimerInput"
+            type="number"
+            value="20">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            最低切替回数
+        </label>
+
+        <input
+            id="minShuffleInput"
+            type="number"
+            value="50">
+
+    </div>
+
+
+
+    <div class="setting-item">
+
+        <label>
+            最大切替回数
+        </label>
+
+        <input
+            id="maxShuffleInput"
+            type="number"
+            value="80">
+
+    </div>
+
+    <!-- モード設定 -->
+
+<div class="setting-item">
+
+    <label>
+        モード
+    </label>
+
+<select id="modeInput">
+
+    <option value="normal">
+        モード①：通常
+    </option>
+
+    <option value="forceInterval">
+        モード②：＋1で強制インターバル
+    </option>
+
+    <option value="forceIntervalEvent">
+        モード③：＋1で強制インターバル＋罰
+    </option>
+
+    <option value="progressiveEvent">
+        モード④：＋1で③＋罰確率上昇
+    </option>
+
+</select>
+
+</div>
+
+
+<!-- 強制インターバル -->
+
+<div
+    class="setting-item"
+    id="forceIntervalSetting"
+>
+
+    <label>
+        強制インターバル（秒）
+    </label>
+
+    <input
+        id="forceIntervalInput"
+        type="number"
+        value="10">
+
+</div>
+<!-- 追加イベント確率 -->
+
+<!-- 罰確率 -->
+
+<div
+    class="setting-item"
+    id="eventProbabilitySetting"
+>
+
+    <label>
+        罰初期確率（％）
+    </label>
+
+    <input
+        id="eventProbabilityInput"
+        type="number"
+        value="50"
+        min="0"
+        max="100">
+
+</div>
+
+
+<!-- 罰確率上昇量 -->
+
+<div
+    class="setting-item"
+    id="eventIncreaseSetting"
+>
+
+    <label>
+        罰確率上昇量（％）
+    </label>
+
+    <input
+        id="eventIncreaseInput"
+        type="number"
+        value="10"
+        min="0"
+        max="100">
+
+</div>
+
+
+<!-- 罰確率上限 -->
+
+<div
+    class="setting-item"
+    id="eventMaxProbabilitySetting"
+>
+
+    <label>
+        罰確率上限（％）
+    </label>
+
+    <input
+        id="eventMaxProbabilityInput"
+        type="number"
+        value="100"
+        min="0"
+        max="100">
+
+</div>
+
+<!-- メンバー管理 -->
+
+<div class="setting-item">
+
+    <button id="memberManagerButton">
+        メンバー管理
+    </button>
+
+</div>
+
+    <div class="settings-buttons">
+
+        <button id="saveSettingsButton">
+            保存
+        </button>
+
+
+        <button id="closeSettingsButton">
+            閉じる
+        </button>
+
+    </div>
+
+
+</div>
+<!-- メンバー管理画面 -->
+
+<div id="memberManagerPanel" class="member-manager-panel">
+
+
+    <h2>
+        メンバー管理
+    </h2>
+
+
+    <div id="memberList">
+
+  </div>
+
+
+<div id="memberEditPanel" class="member-edit-panel">
+
+
+    <h2>
+        メンバー編集
+    </h2>
+
+
+    <img
+        id="editMemberImage"
+        src="images/noimage.png">
+
+<input
+    id="imageUpload"
+    type="file"
+    accept="image/*">
+
+
+<input
+    id="editMemberName"
+    type="text">
+
+    <div class="edit-buttons">
+
+        <button id="saveMemberEditButton">
+            保存
+        </button>
+
+
+        <button id="cancelMemberEditButton">
+            戻る
+        </button>
+
+    </div>
+
+
+</div>
+
+    </div>
+
+
+    <button id="closeMemberManagerButton">
+        閉じる
+    </button>
+
+
+</div>
+
+            <button id="startButton">
+                START
+            </button>
+
+            <button id="stopButton">
+                STOP
+            </button>
+
+            <button id="settingsButton">
+                設定
+            </button>
+
+            <!-- カウンター -->
+
+<div class="counter-area">
+
+    <div class="counter-control">
+
+
+        <button id="minusButton">
+            －
+        </button>
+
+
+        <div id="counterValue">
+            0
+        </div>
+
+
+        <button id="plusButton">
+            ＋
+        </button>
+
+
+    </div>
+
+
+    <button id="resetCounterButton">
+    </button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+
+    <script src="data.js"></script>
+
+    <script src="roulette.js"></script>
+
+    <script src="timer.js"></script>
+
+    <script src="settings.js"></script>
+
+    <script src="memberManager.js"></script>
+
+    <script src="app.js"></script>
+
+    <script>
+
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register(
+        "service-worker.js"
+    );
+
+}
+
+</script>
+</body>
+
+</html>
