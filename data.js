@@ -146,13 +146,13 @@ const settings = {
     // 強制インターバル
     forceInterval: 60,
 
-    　　// お仕置き初期確率（％）
+    　　// 罰初期確率（％）
 eventProbability: 50,
 
-// お仕置き確率上昇量（％）
+// 罰確率上昇量（％）
 eventIncrease: 10,
 
-// お仕置き確率上限（％）
+// 罰確率上限（％）
 eventMaxProbability: 100,
 
     // 追加イベント発生確率（％）

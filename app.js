@@ -28,13 +28,16 @@ let waitingForTimer = false;
 
 
 // ==========================================
-// モード④ お仕置き確率
+// モード④ 罰確率
 // ==========================================
 
 let currentEventProbability = 0;
 
 
-// モード③・④の罰判定待ち
+// ==========================================
+// モード③・④
+// 罰判定待ち
+// ==========================================
 
 let waitingForAdditionalEvent = false;
 
@@ -57,18 +60,17 @@ startButton.addEventListener(
         appRunning = true;
 
 
-        // ======================================
+        // ==================================
         // モード④の確率を初期化
-        // ======================================
+        // ==================================
 
         currentEventProbability =
             settings.eventProbability;
 
 
-        console.log(
-            "START：お仕置き確率を初期化",
-            currentEventProbability + "%"
-        );
+        // 確率表示を更新
+
+        updateEventProbabilityDisplay();
 
 
         startNextRoulette();
@@ -121,9 +123,9 @@ function rouletteFinished() {
         getSelectedMember();
 
 
-    // ======================================
+    // ==================================
     // メンバー表示
-    // ======================================
+    // ==================================
 
     if (member) {
 
@@ -139,9 +141,9 @@ function rouletteFinished() {
     }
 
 
-    // ======================================
-    // お仕置き表示
-    // ======================================
+    // ==================================
+    // 罰表示
+    // ==================================
 
     const eventResultDisplay =
         document.getElementById(
@@ -158,10 +160,10 @@ function rouletteFinished() {
     }
 
 
-    // ======================================
+    // ==================================
     // モード③・④
     // 強制インターバル後のみ抽選
-    // ======================================
+    // ==================================
 
     if (
         (
@@ -178,13 +180,21 @@ function rouletteFinished() {
 
         if (eventResult) {
 
-            eventResultDisplay.textContent =
-                "罰：あり";
+            if (eventResultDisplay) {
+
+                eventResultDisplay.textContent =
+                    "罰：あり";
+
+            }
 
         } else {
 
-            eventResultDisplay.textContent =
-                "罰：なし";
+            if (eventResultDisplay) {
+
+                eventResultDisplay.textContent =
+                    "罰：なし";
+
+            }
 
         }
 
@@ -204,7 +214,7 @@ function rouletteFinished() {
         ) {
 
             console.log(
-                "モード④：使用したお仕置き確率:",
+                "モード④：使用した罰確率:",
                 currentEventProbability + "%"
             );
 
@@ -228,9 +238,9 @@ function rouletteFinished() {
     }
 
 
-    // ======================================
+    // ==================================
     // メインタイマー開始
-    // ======================================
+    // ==================================
 
     startMainTimer();
 
@@ -279,12 +289,16 @@ stopButton.addEventListener(
 
 
         // ==================================
-        // モード④の確率をリセット
+        // モード④の確率を初期化
         // ==================================
 
         currentEventProbability =
             settings.eventProbability;
 
+
+        // ==================================
+        // タイマー・ルーレット停止
+        // ==================================
 
         stopRoulette();
 
@@ -292,7 +306,7 @@ stopButton.addEventListener(
 
 
         // ==================================
-        // 罰表示を消す
+        // 罰結果を消す
         // ==================================
 
         const eventResultDisplay =
@@ -306,6 +320,13 @@ stopButton.addEventListener(
             eventResultDisplay.textContent = "";
 
         }
+
+
+        // ==================================
+        // 確率表示を更新
+        // ==================================
+
+        updateEventProbabilityDisplay();
 
 
         statusTextUpdate(
@@ -334,6 +355,86 @@ function statusTextUpdate(text) {
 
 
 // ==========================================
+// 罰確率表示
+// ==========================================
+
+function updateEventProbabilityDisplay() {
+
+
+    const display =
+        document.getElementById(
+            "eventProbabilityDisplay"
+        );
+
+
+    if (!display) {
+
+        return;
+
+    }
+
+
+    // ==================================
+    // モード③
+    // ==================================
+
+    if (
+        settings.mode === "forceIntervalEvent"
+    ) {
+
+
+        display.textContent =
+            "罰執行確率：" +
+            settings.eventProbability +
+            "%";
+
+
+        display.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    // ==================================
+    // モード④
+    // ==================================
+
+    if (
+        settings.mode === "progressiveEvent"
+    ) {
+
+
+        display.textContent =
+            "罰執行確率：" +
+            currentEventProbability +
+            "%";
+
+
+        display.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    // ==================================
+    // モード①・②
+    // ==================================
+
+    display.textContent = "";
+
+    display.style.display =
+        "none";
+
+}
+
+
+// ==========================================
 // 設定ボタン
 // ==========================================
 
@@ -349,7 +450,7 @@ settingsButton.addEventListener(
 
 
 // ==========================================
-// カウンター機能
+// カウンター
 // ==========================================
 
 let counter = 0;
@@ -479,7 +580,8 @@ document
 
                         // ==================================
                         // モード④
-                        // 罰判定を予約＋確率上昇
+                        // 罰判定を予約
+                        // ＋確率上昇
                         // ==================================
 
                         if (
@@ -493,7 +595,7 @@ document
 
 
                             // ==================================
-                            // お仕置き確率を上昇
+                            // 罰確率を上昇
                             // ==================================
 
                             currentEventProbability +=
@@ -521,9 +623,16 @@ document
 
 
                             console.log(
-                                "現在のお仕置き確率:",
+                                "現在の罰確率:",
                                 currentEventProbability + "%"
                             );
+
+
+                            // ==================================
+                            // 画面の確率表示を更新
+                            // ==================================
+
+                            updateEventProbabilityDisplay();
 
                         }
 
@@ -589,7 +698,7 @@ document
 
 
 // ==========================================
-// お仕置き抽選
+// 罰抽選
 // ==========================================
 
 function decideAdditionalEvent() {
@@ -616,26 +725,27 @@ function decideAdditionalEvent() {
     let probability;
 
 
+    // ======================================
+    // モード④
+    // ======================================
+
     if (
         settings.mode === "progressiveEvent"
     ) {
 
 
-        // ==================================
-        // モード④
-        // 上昇後の確率を使用
-        // ==================================
-
         probability =
             currentEventProbability;
 
-    } else {
+    }
 
 
-        // ==================================
-        // モード③
-        // 固定確率を使用
-        // ==================================
+    // ======================================
+    // モード③
+    // ======================================
+
+    else {
+
 
         probability =
             settings.eventProbability;
@@ -652,7 +762,7 @@ function decideAdditionalEvent() {
 
 
     console.log(
-        "お仕置き抽選",
+        "罰抽選",
         "確率:",
         probability + "%",
         "乱数:",
