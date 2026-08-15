@@ -34,6 +34,10 @@
                 
             </div>
 
+            <div id="eventResult">
+    
+</div>
+
         </div>
 
         <!-- タイマー -->
@@ -117,6 +121,118 @@
             value="80">
 
     </div>
+
+    <!-- モード設定 -->
+
+<div class="setting-item">
+
+    <label>
+        モード
+    </label>
+
+<select id="modeInput">
+
+    <option value="normal">
+        モード①：通常
+    </option>
+
+    <option value="forceInterval">
+        モード②：＋1で強制インターバル
+    </option>
+
+    <option value="forceIntervalEvent">
+        モード③：＋1で強制インターバル＋罰
+    </option>
+
+    <option value="progressiveEvent">
+        モード④：＋1で③＋罰確率上昇
+    </option>
+
+</select>
+
+</div>
+
+
+<!-- 強制インターバル -->
+
+<div
+    class="setting-item"
+    id="forceIntervalSetting"
+>
+
+    <label>
+        強制インターバル（秒）
+    </label>
+
+    <input
+        id="forceIntervalInput"
+        type="number"
+        value="10">
+
+</div>
+<!-- 追加イベント確率 -->
+
+<!-- 罰確率 -->
+
+<div
+    class="setting-item"
+    id="eventProbabilitySetting"
+>
+
+    <label>
+        罰初期確率（％）
+    </label>
+
+    <input
+        id="eventProbabilityInput"
+        type="number"
+        value="50"
+        min="0"
+        max="100">
+
+</div>
+
+
+<!-- 罰確率上昇量 -->
+
+<div
+    class="setting-item"
+    id="eventIncreaseSetting"
+>
+
+    <label>
+        罰確率上昇量（％）
+    </label>
+
+    <input
+        id="eventIncreaseInput"
+        type="number"
+        value="10"
+        min="0"
+        max="100">
+
+</div>
+
+
+<!-- 罰確率上限 -->
+
+<div
+    class="setting-item"
+    id="eventMaxProbabilitySetting"
+>
+
+    <label>
+        罰確率上限（％）
+    </label>
+
+    <input
+        id="eventMaxProbabilityInput"
+        type="number"
+        value="100"
+        min="0"
+        max="100">
+
+</div>
 
 <!-- メンバー管理 -->
 

@@ -90,6 +90,72 @@ function startMainTimer() {
 // インターバル開始
 // ==========================================
 
+// ==========================================
+// 強制インターバル開始
+// ==========================================
+
+function startForceIntervalTimer() {
+
+
+    stopTimer();
+
+
+    remainingTime =
+        settings.forceInterval;
+
+
+    timerMode =
+        "forceInterval";
+
+
+    timerRunning = true;
+
+
+    updateTimerDisplay();
+
+
+    statusDisplay.textContent =
+        "強制インターバル";
+
+
+    timerInterval =
+        setInterval(() => {
+
+
+            remainingTime--;
+
+
+            updateTimerDisplay();
+
+
+            if (remainingTime <= 0) {
+
+
+                stopTimer();
+
+
+                statusDisplay.textContent =
+                    "次のルーレット準備";
+
+
+                // 強制インターバル終了後
+                // 次のルーレットへ
+
+                if (
+                    typeof intervalFinished === "function"
+                ) {
+
+                    intervalFinished();
+
+                }
+
+
+            }
+
+
+        }, 1000);
+
+}
 function startIntervalTimer() {
 
 

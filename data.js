@@ -125,20 +125,38 @@ const members = [
 // ---------- アプリ設定 ----------
 const settings = {
 
-    // メインタイマー（秒）
-    mainTimer: 10,
+    // メインタイマー
+    mainTimer: 180,
 
-    // インターバル（秒）
-    intervalTimer: 5,
+    // 通常インターバル
+    intervalTimer: 10,
 
-    // スロット演出時間（秒）
+    // スロット演出時間
     slotDuration: 5,
 
-    // スロットの最小切替回数
-    minShuffleCount: 50,
+    // 最低切替回数
+    minShuffleCount: 45,
 
-    // スロットの最大切替回数
-    maxShuffleCount: 80
+    // 最大切替回数
+    maxShuffleCount: 75,
+
+    // モード
+    mode: "normal",
+
+    // 強制インターバル
+    forceInterval: 60,
+
+    　　// お仕置き初期確率（％）
+eventProbability: 50,
+
+// お仕置き確率上昇量（％）
+eventIncrease: 10,
+
+// お仕置き確率上限（％）
+eventMaxProbability: 100,
+
+    // 追加イベント発生確率（％）
+    eventProbability: 50,
 
 };
 
